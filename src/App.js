@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Todos from "./components/Todos";
 import ThemeContextProvider from "./contexts/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
+import TodoContextProvider from "./contexts/TodoContext";
 
 const postList = [
   {
@@ -42,7 +43,9 @@ const App = () => {
 
       <ThemeContextProvider>
         <Navbar></Navbar>
-        <Todos></Todos>
+        <TodoContextProvider>
+          <Todos></Todos>
+        </TodoContextProvider>
         <ThemeToggle></ThemeToggle>
       </ThemeContextProvider>
     

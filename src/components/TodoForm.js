@@ -1,7 +1,15 @@
 import React, {useState, useContext} from 'react'
 import {ThemeContext} from '../contexts/ThemeContext'
+import {TodoContext} from '../contexts/TodoContext'
 
-const TodoForm = (props) => {
+const TodoForm = () => {
+
+    const {theme} = useContext(ThemeContext)
+    const {isLightTheme, light, dark} = theme
+
+    //load context
+    const {addTodo} = useContext(TodoContext)
+
     const [title, setTitle] = useState('');
 
     const onTitleChange = event => {
@@ -10,14 +18,13 @@ const TodoForm = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        props.addTodo({
+        addTodo({
             id: 4,
             title,
         })
     }
 
-    const {theme} = useContext(ThemeContext)
-    const {isLightTheme, light, dark} = theme
+    
     const style = isLightTheme ? light : dark
 
     // const style = {
